@@ -23,7 +23,7 @@ class App extends Component {
         <h1>Kamion React Project</h1>
           <div className="card">
             <div className="card-body">
-              <h3 className="card-title"> { this.state.countries.map(person => <li>{person.name}</li>)}</h3>
+              <h3 className="card-title"> { this.state.countries.map(country => <li>{country.name}</li>)}</h3>
             </div>
           </div>
         </div>
