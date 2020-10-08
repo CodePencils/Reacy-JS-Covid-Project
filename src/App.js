@@ -20,16 +20,14 @@ class App extends Component {
        <div className="container">
         <div className="col-xs-8">
         <h1>Kamion React Project</h1>
-        {this.state.countries.map((country) => (
           <div className="card">
-           <div className="card-body">
-               <h3 className="card-title">{country.name}</h3>
-             
+            <div className="card-body">
+              <h3 className="card-title">{this.props.countries.name}.</h3>
             </div>
           </div>
-        ))}
         </div>
        </div>
     );
   }
+}
 export default App;
