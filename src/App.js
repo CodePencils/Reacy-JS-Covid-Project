@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+const API_URL = 'https://covid19.mathdro.id/api';
 
 class App extends Component {
-
-
-state = {
-    todos: []
+  state = {
+    countries: []
   }
   componentDidMount() {
-    fetch('https://covid19.mathdro.id/api/countries')
-    .then(res => res.json())
+    const url = '${API_URL}/countries/';
+    axios.get(url).then(response => response.data)
     .then((data) => {
       this.setState({ countries: data })
       console.log(this.state.countries)
-    })
-    .catch(console.log)
+     })
   }
-render() {
+ render() {
 
     return (
        <div className="container">
-        <div className="col-xs-12">
+        <div className="col-xs-8">
         <h1>Kamion React Project</h1>
-        {this.state.todos.map((todo) => (
+        {this.state.countries.map((country) => (
           <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">{todo.title}</h5>
-              <h6 className="card-subtitle mb-2 text-muted">
-              { todo.completed &&
-                <span>
-                Completed
-                </span>
-              }
-              { !todo.completed &&
-                <span>
-                  Pending
-                </span>
-              }              
-              </h6>
+           <div className="card-body">
+               <h3 className="card-title">{country.name}</h3>
+             
             </div>
           </div>
         ))}
@@ -44,5 +32,4 @@ render() {
        </div>
     );
   }
-}
 export default App;
